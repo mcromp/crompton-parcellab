@@ -3,6 +3,8 @@ Hey This is Matthew Crompton's ParcelLab coding challange.
 To run:
 Download the repo.
 
+# backend
+
 navigate to the root folder, then the "backend" folder.
 run:
 
@@ -16,6 +18,8 @@ then:
 ```
 npm start
 ```
+
+# frontend
 
 go back to the root folder, navigate to the "client" folder
 run:
