@@ -4,8 +4,9 @@ import Orders from "./pages/Orders";
 
 const App = () => {
  const [orders, setOrders] = useState();
- const [textVal, setTextVal] = useState("");
+ const [textVal, setTextVal] = useState("julian@parcellab.com");
  const [isLoading, setIsLoading] = useState(false);
+ const [trackingNumbers, setTrackingNumbers] = useState();
 
  const getOrders = async (email = "julian@parcellab.com") => {
   try {
@@ -17,6 +18,19 @@ const App = () => {
     body: JSON.stringify({ email }),
    });
    const data = await res.json();
+   //  console.log(data);
+   if (!data[0]) {
+    setIsLoading(false);
+    alert("No order for that email");
+   }
+   //gets and returns all unique tracking numbers from user's orders
+   const trackingNumbers = [];
+   data.forEach((order) => {
+    if (trackingNumbers.indexOf(order.tracking_number) === -1) {
+     trackingNumbers.push(order.tracking_number);
+    }
+   });
+   setTrackingNumbers(trackingNumbers);
    setOrders(data);
    setIsLoading(false);
   } catch (e) {
@@ -31,8 +45,8 @@ const App = () => {
   setTextVal("");
  };
 
- if (orders) {
-  return <Orders orders={orders} />;
+ if (orders && trackingNumbers) {
+  return <Orders orders={orders} trackingNumbers={trackingNumbers} />;
  }
  return (
   <div className="App">
