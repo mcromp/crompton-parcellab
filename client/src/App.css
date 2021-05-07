@@ -1,7 +1,34 @@
 .App {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
   text-align: center;
+  justify-content: center;
+
 }
 
 .block{
+  padding:1rem;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+
+.orderBlock{
+display: flex;
+flex-direction: column;
+margin: 3rem;
+
+}
+.orderBlock:hover{
+  cursor: pointer;
+}
+
+
+.orderLabel{
+  margin: 0;
+  padding: 0;
+  color: #aaa;
+  font-size: 0.8rem;
+}
+.orderFont{
+  font-weight: 600;
 }

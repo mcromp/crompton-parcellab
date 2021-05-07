@@ -44,10 +44,10 @@ const Orders = ({ orders, trackingNumbers }) => {
       (o) => o.tracking_number === trackData.tracking_number,
      );
      const { city, street, zip_code } = currOrder;
-     const address = `${street}\n${zip_code} ${city}`;
+     const address = `${street} ${zip_code} ${city}`;
      return (
       <div
-       className="block"
+       className="block orderBlock"
        key={trackData.tracking_number}
        onClick={() => handleClick(currOrder.orderNo)}
       >
@@ -64,8 +64,8 @@ const Orders = ({ orders, trackingNumbers }) => {
 
 const OrderItem = ({ label, children }) => (
  <div>
-  <p>{label}</p>
-  <p>{children}</p>
+  <p className="orderLabel">{label}</p>
+  <p className="orderFont">{children}</p>
  </div>
 );
 

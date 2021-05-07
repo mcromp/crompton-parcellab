@@ -1,7 +1,5 @@
 Hey This is Matthew Crompton's ParcelLab coding challange.
 
-unfortunately, I was not able to complete it in the time provided!
-
 To run:
 Download the repo.
 
