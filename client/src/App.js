@@ -4,7 +4,7 @@ import Orders from "./pages/Orders";
 
 const App = () => {
  const [orders, setOrders] = useState();
- const [textVal, setTextVal] = useState();
+ const [textVal, setTextVal] = useState("");
  const [isLoading, setIsLoading] = useState(false);
  const [trackingNumbers, setTrackingNumbers] = useState();
 
