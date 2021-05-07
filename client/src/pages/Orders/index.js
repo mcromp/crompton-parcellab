@@ -7,11 +7,6 @@ const Orders = ({ orders, trackingNumbers }) => {
  const [orderCard, setOrderCard] = useState();
 
  useEffect(() => {
-  console.log("orders, ", orders);
-  console.log("new data", trackingData);
- }, [trackingData, orders]);
-
- useEffect(() => {
   const getTrackingStatus = async (tracking_numbers) => {
    try {
     const res = await fetch("/checkpoint", {
@@ -52,6 +47,7 @@ const Orders = ({ orders, trackingNumbers }) => {
      const address = `${street}\n${zip_code} ${city}`;
      return (
       <div
+       className="block"
        key={trackData.tracking_number}
        onClick={() => handleClick(currOrder.orderNo)}
       >
@@ -68,7 +64,7 @@ const Orders = ({ orders, trackingNumbers }) => {
 
 const OrderItem = ({ label, children }) => (
  <div>
-  <small style={{ color: "#bbb" }}>{label}</small>
+  <p>{label}</p>
   <p>{children}</p>
  </div>
 );

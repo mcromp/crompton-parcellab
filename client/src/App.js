@@ -8,7 +8,7 @@ const App = () => {
  const [isLoading, setIsLoading] = useState(false);
  const [trackingNumbers, setTrackingNumbers] = useState();
 
- const getOrders = async (email = "julian@parcellab.com") => {
+ const getOrders = async (email) => {
   try {
    const res = await fetch("/orders", {
     method: "POST",
@@ -18,7 +18,6 @@ const App = () => {
     body: JSON.stringify({ email }),
    });
    const data = await res.json();
-   //  console.log(data);
    if (!data[0]) {
     setIsLoading(false);
     alert("No order for that email");
