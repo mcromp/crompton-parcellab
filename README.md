@@ -8,19 +8,26 @@ run:
 
 ```
 npm install
+
+```
+
+then:
+
+```
+npm start
 ```
 
 go back to the root folder, navigate to the "client" folder
 run:
 
 ```
-npm install
+yarn install
 ```
 
-navigate to the root folder again and run:
+then:
 
 ```
-npm start
+yarn start
 ```
 
 the backend is on localhost:8080
