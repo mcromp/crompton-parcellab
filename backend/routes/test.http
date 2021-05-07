@@ -1,0 +1,6 @@
+POST http://localhost:8080/checkpoint HTTP/1.1
+content-type: application/json
+
+{
+    "tracking_numbers": ["00340000161200000001", "00331612197202003141"]
+}

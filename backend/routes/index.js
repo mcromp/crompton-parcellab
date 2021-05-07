@@ -17,23 +17,32 @@ router.get("/", (req, res) => {
 
 router.post("/orders", (req, res) => {
  const { email } = req.body;
- if (email === "") res.status(400).json("empty");
+ if (!email) {
+  return res.status(400).json("empty");
+ }
  const userTrackings = trackingsDB.filter((track) => track.email === email);
+ if (!userTrackings[0]) {
+  return res.status(404).json("");
+ }
  res.status(200).json(userTrackings);
 });
 
 router.post("/checkpoint", (req, res) => {
- const { tracking_number } = req.body;
- const checkpoints = checkpointsDB.filter(
-  (c) => c.tracking_number === tracking_number,
- );
- if (!checkpoints) res.status(404);
- //returns the latest checkpoint for requested order
- const latestCheckpoint = checkpoints.reduce((acc, cur) => {
-  if (compareDates(cur.timestamp, acc.timestamp)) return cur;
-  return acc;
- }, checkpoints[0]);
- res.status(200).json(latestCheckpoint);
+ const { tracking_numbers } = req.body;
+
+ const latestOrderStatus = tracking_numbers.map((tracking_number) => {
+  //makes array of all items with submitted tracking numbers
+  const orderStatuses = checkpointsDB.filter(
+   (c) => c.tracking_number === tracking_number,
+  );
+  //returns tracking number with more current date
+  return orderStatuses.reduce((acc, cur) => {
+   if (compareDates(cur.timestamp, acc.timestamp)) return cur;
+   return acc;
+  }, orderStatuses[0]);
+ });
+
+ res.status(200).json(latestOrderStatus);
 });
 
 module.exports = router;
